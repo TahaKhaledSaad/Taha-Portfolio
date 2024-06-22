@@ -41,7 +41,7 @@ window.onscroll = () => {
 
 /*========= scroll reveal =========*/
 ScrollReveal({
-  //   reset: true,
+  reset: true,
   distance: "80px",
   duration: 2000,
   delay: 200,
@@ -231,12 +231,13 @@ function closeToggle(id) {
     if (project.id === id) {
       document.querySelector(
         `#project-${id} .portfolio-layer`
-      ).style.transform = "translateY(-100%)";
+      ).style.transform = "translateY(100%)";
     }
   });
 }
 
 function openToggle(id) {
+  // Open the selected toggle
   projects.forEach((project) => {
     if (project.id === id) {
       document.querySelector(
