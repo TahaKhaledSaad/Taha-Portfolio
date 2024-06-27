@@ -473,6 +473,10 @@ span {
 /* ============================================ */
 /*TODO Contact Section */
 
+.contact {
+  position: relative;
+}
+
 .contact h2 {
   margin-bottom: 3rem;
 }
@@ -758,3 +762,102 @@ span {
     width: 70%;
   }
 }
+
+/* ============================================ */
+/* loader */
+/* ============================================ */
+.loader-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.loader {
+  width: 48px;
+  height: 48px;
+  display: block;
+  margin: 15px auto;
+  position: relative;
+  color: #fff;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+.loader::after,
+.loader::before {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: 0;
+  background-color: #fff;
+  border-radius: 50%;
+  animation: scale50 1s infinite ease-in-out;
+}
+.loader::before {
+  top: auto;
+  bottom: 0;
+  background-color: var(--main-color);
+  animation-delay: 0.5s;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes scale50 {
+  0%,
+  100% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1);
+  }
+}
+
+/* ============================================ */
+/* Notification */
+/* ============================================ */
+.notification {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  padding: 1rem 2rem;
+  background: var(--main-color);
+  color: var(--second-bg-color);
+  border-radius: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  animation: notification__animation 0.5s ease;
+}
+
+.notification i {
+  font-size: 2.5rem;
+  margin-right: 1rem;
+  cursor: pointer;
+}
+
+.notification span {
+  font-size: 1.6rem;
+  color: var(--second-bg-color);
+  margin-right: 1rem;
+  font-size: 1.4rem;
+  letter-spacing: 0.1rem;
+}
+
+@keyframes notification__animation {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* ============================================ */

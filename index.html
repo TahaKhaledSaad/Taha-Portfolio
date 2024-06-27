@@ -17,12 +17,17 @@
 
     <!-- custom css  -->
     <link rel="stylesheet" href="./css/style.css" />
+
+    <!-- Email Js -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   </head>
 
   <body>
     <!-- TODO header design  -->
     <header class="header">
-      <h2 class="logo"> <img src="./images/icon.png" width="30px" alt=""> Taha</h2>
+      <h2 class="logo">
+        <img src="./images/icon.png" width="30px" alt="" /> Taha
+      </h2>
 
       <i class="bx bx-menu" id="menu-icon"></i>
 
@@ -94,7 +99,7 @@
           challenges. I usually spend my time wondering what the next thing I
           can challenge myself to do could be.
         </p>
-        <a href="./images/CV.pdf" download="cv.pdf" class="btn">Download CV</a>
+        <a href="./images/CV.pdf" download="Taha Khaled Saad.pdf" class="btn">Download CV</a>
       </div>
     </section>
 
@@ -163,34 +168,31 @@
 
       <form onsubmit="sendEmail(event)">
         <div class="input-box">
-          <input type="text" id="fullName" placeholder="Full Name" />
-          <input type="email" id="email" placeholder="Email" />
+          <input type="text" id="firstName" placeholder="First Name" required />
+          <input type="text" id="lastName" placeholder="Last Name" required />
         </div>
         <div class="input-box">
-          <input type="number" id="mobile" placeholder="Mobile" />
-          <input type="text" id="subject" placeholder="Email Subject" />
+          <input type="email" id="email" placeholder="Email" required />
+          <input type="text" id="subject" placeholder="Subject" required />
         </div>
         <textarea
           name=""
           id="message"
           cols="30"
           rows="10"
-          placeholder="Your Message"
+          placeholder="Say something about us ..."
+          required
         ></textarea>
         <input type="submit" value="Send Message" class="btn" />
       </form>
+      <div class="loader-container">
+        <span class="loader"></span>
+      </div>
     </section>
 
-    <!-- Popup -->
-    <div id="popup1" class="overlay">
-      <div class="popup">
-        <h2>Here i am</h2>
-        <a class="close" href="#">&times;</a>
-        <div class="content">
-          Thank to pop me out of that button, but now i'm done so you can close
-          this window.
-        </div>
-      </div>
+    <!-- Notification Design -->
+    <div class="notification">
+      <i class="bx bxs-check-square"></i> <span>Email has been sent</span>
     </div>
 
     <!-- TODO footer design  -->
@@ -233,5 +235,3 @@
     </script>
   </body>
 </html>
-
-

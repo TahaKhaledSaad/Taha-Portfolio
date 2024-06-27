@@ -73,47 +73,43 @@ const currentYear = new Date().getFullYear();
 document.getElementById("currentYear").innerText = currentYear;
 
 /*========= Email.js =========*/
-// function sendEmail(event) {
-//   event.preventDefault();
-//   let fullName = document.getElementById("fullName").value;
-//   let email = document.getElementById("email").value;
-//   let mobile = document.getElementById("mobile").value;
-//   let subject = document.getElementById("subject").value;
-//   let message = document.getElementById("message").value;
+const loader = document.querySelector(".loader");
+loader.style.display = "none";
 
-//   Email.send({
-//     Host: "smtp.gmail.com",
-//     Username: "tahakhsaad55@gmail.com",
-//     Password: "09AFD7B4A455BC6CD405B272C373AC87CD3F",
-//     To: "tahakhsaad55@gmail.com",
-//     From: email,
-//     Subject: subject,
-//     Body: `Name: ${fullName} <br/> Email: ${email} <br/> Message: ${message} <br/> Mobile: ${mobile}`,
-//   }).then((message) => {
-//     // document.getElementById("popup1").style.opacity = 1;
-//     console.log(message);
-//     alert(message);
-//   });
-// }
+const notify = document.querySelector(".notification");
+notify.style.display = "none";
 
 function sendEmail(event) {
   event.preventDefault();
-  let fullName = document.getElementById("fullName").value;
-  let email = document.getElementById("email").value;
-  let mobile = document.getElementById("mobile").value;
-  let subject = document.getElementById("subject").value;
-  let message = document.getElementById("message").value;
+  loader.style.display = "block";
 
-  Email.send({
-    SecureToken: "Your-Elastic-Email-Secure-Token", // Replace with your Elastic Email Secure Token
-    To: "tahakhsaad55@gmail.com",
-    From: email,
-    Subject: subject,
-    Body: `Name: ${fullName} <br/> Email: ${email} <br/> Message: ${message} <br/> Mobile: ${mobile}`,
-  }).then((message) => {
-    console.log(message);
-    alert(message);
-  });
+  var templateParams = {
+    firstName: document.getElementById("firstName").value,
+    email: document.getElementById("email").value,
+    lastName: document.getElementById("lastName").value,
+    subject: document.getElementById("subject").value,
+    message: document.getElementById("message").value,
+  };
+
+  emailjs.init("JDjwsl8plApW2xhJb");
+
+  var service_id = "service_ta20zur";
+  var template_id = "template_q8v1py4";
+
+  emailjs
+    .send(service_id, template_id, templateParams)
+    .then((res) => {
+      loader.style.display = "none";
+      notify.style.display = "flex";
+      setTimeout(() => {
+        notify.style.display = "none";
+      }, 3000);
+    })
+
+    .catch((err) => {
+      alert("Something went wrong!");
+      loader.style.display = "none";
+    });
 }
 
 /*========= Portfolio =========*/
